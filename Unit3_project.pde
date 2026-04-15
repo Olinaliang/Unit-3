@@ -8,6 +8,9 @@ color purple = #6A4C93;
 color white = #FFFFFF;
 color black = #000000;
 
+//Stamp
+PImage winnie;
+
 float sliderX;
 float shade;
 
@@ -23,6 +26,9 @@ void setup() {
 
   //Drawing Board
   background(255);
+  
+  //stamp
+  winnie = loadImage("winnie.png");
 }
 
 void draw() {
@@ -32,6 +38,14 @@ void draw() {
   noStroke();
   fill(220);
   rect(0,0,800,150);
+  
+  //winnie stamp button background
+  stroke(black);
+  fill(255);
+  rect(460, 37, 85, 85);
+  
+  //winnie stamp
+  image(winnie, 460, 42, 150, 150);
   
   //Slider
   stroke(black);
