@@ -10,6 +10,7 @@ color black = #000000;
 
 //Stamp
 PImage winnie;
+PImage pikachu;
 
 float sliderX;
 float shade;
@@ -29,6 +30,7 @@ void setup() {
   
   //stamp
   winnie = loadImage("winnie.png");
+  pikachu = loadImage("pikachu.png");
 }
 
 void draw() {
@@ -39,14 +41,19 @@ void draw() {
   fill(220);
   rect(0,0,800,150);
   
-  //winnie stamp button background
+  //winnie stamp 
+  tactile(460,37,85,85);
   stroke(black);
   fill(255);
   rect(460, 37, 85, 85);
+  image(winnie, 462, 40, 81, 81);
   
-  //winnie stamp
-  image(winnie, 460, 42, 150, 150);
-  
+  //pikachu stamp
+  stroke(black);
+  fill(255);
+  rect(560, 37, 85, 85);
+  image(pikachu, 561.5, 40, 80, 80);
+ 
   //Slider
   stroke(black);
   line(55,120,300,120);
@@ -123,4 +130,12 @@ void controlSlider() {
     sliderX = mouseX;
   }
   shade = map(sliderX,55,300,5,20);   
+}
+
+void tactile(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(255,255,0);
+  } else {
+    fill(255);
+  }
 }
