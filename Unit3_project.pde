@@ -10,6 +10,7 @@ color black = #000000;
 
 //Stamp
 PImage winnie;
+boolean winnieOn;
 PImage pikachu;
 
 float sliderX;
@@ -30,6 +31,7 @@ void setup() {
   
   //stamp
   winnie = loadImage("winnie.png");
+  winnieOn = false;
   pikachu = loadImage("pikachu.png");
 }
 
@@ -44,7 +46,6 @@ void draw() {
   //winnie stamp 
   tactile(460,37,85,85);
   stroke(black);
-  fill(255);
   rect(460, 37, 85, 85);
   image(winnie, 462, 40, 81, 81);
   
@@ -97,10 +98,14 @@ void rectButton(color c, int x, int y, int w, int h) {
 void mouseDragged() {
   if (mouseX > 55 && mouseX < 300 && mouseY > 100 && mouseY < 140) {
     controlSlider();
-  } else if (mouseY > 150) {  
-    stroke(selectedColor);
-    strokeWeight(shade);  
-    line(pmouseX, pmouseY, mouseX, mouseY);
+  } else if (mouseY > 150) {
+    if (winnieOn == false) {
+      stroke(selectedColor);
+      strokeWeight(shade);  
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      image(winnie, mouseX, mouseY, 85, 85);
+    }
   }
 }
 
@@ -122,6 +127,11 @@ void mouseReleased() {
   }
   if (dist(405, 55, mouseX, mouseY) < 30) {
     selectedColor = purple;
+  }
+  
+  //winnie button
+  if (mouseX > 460 && mouseX < 545 && mouseY > 37 && mouseY < 122) {
+    winnieOn = !winnieOn;
   }
 }
 
