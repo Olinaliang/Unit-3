@@ -190,7 +190,7 @@ void mouseReleased() {
   
   //Save Button
   if (mouseX > 680 && mouseX < 740 && mouseY > 100 && mouseY < 125) {
-    selectOutput("Choose a name for your image filed", "saveImage");
+    selectOutput("Choose a name for your image file", "saveImage");
   }
 }
 
@@ -243,9 +243,9 @@ void openImage(File f) {
 }
 
 //Saving Image
-void saveImage(File f) {
-  if (f !=null) {
-    PImage canvas = get(71, 1, width-71, height-1);
+  void saveImage(File f) {
+  if (f != null) {
+    PImage canvas = get(0, 150, 800, 450);
     canvas.save(f.getAbsolutePath());
   }
 }
