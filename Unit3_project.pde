@@ -234,9 +234,9 @@ void pikachuOnOff() {
 void openImage(File f) {
   if (f !=null) {
     int n = 0;
-    while (n<10) {
+    while (n<100) {
       PImage pic = loadImage(f.getPath());
-      image(pic, 0, 0);
+      image(pic, 0, 150);
       n = n + 1;
     }
   }
