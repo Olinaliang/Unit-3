@@ -16,6 +16,7 @@ boolean pikachuOn;
 
 float sliderX;
 float shade;
+float stampSize;
 
 //Variables For Color Selection
 color selectedColor;   
@@ -26,7 +27,8 @@ void setup() {
   textSize(12);
   selectedColor = red;
   sliderX = 155;
-  shade = 10;   
+  shade = 10;
+  stampSize = 50;   
 
   //Drawing Board
   background(255);
@@ -123,9 +125,9 @@ void mouseDragged() {
     controlSlider();
   } else if (mouseY > 150) {
     if (winnieOn == true) {
-      image(winnie, mouseX, mouseY, 85, 85);
+      image(winnie, mouseX, mouseY, stampSize, stampSize);
     } else if (pikachuOn == true) {
-      image(pikachu, mouseX, mouseY, 85, 85);
+      image(pikachu, mouseX, mouseY, stampSize, stampSize);
     } else {
       stroke(selectedColor);
       strokeWeight(shade);  
@@ -198,7 +200,8 @@ void controlSlider() {
   if (mouseX > 55 && mouseX < 300 && mouseY > 100 && mouseY < 140) {
     sliderX = mouseX;
   }
-  shade = map(sliderX,55,300,5,20);   
+  shade = map(sliderX,55,300,5,20);
+  stampSize = map(sliderX,55,300,25,100);
 }
 
 void tactile(int x, int y, int w, int h) {
@@ -236,16 +239,16 @@ void openImage(File f) {
     int n = 0;
     while (n<100) {
       PImage pic = loadImage(f.getPath());
-      image(pic, 0, 150);
+      image(pic, 0, 150, 800, height-150);
       n = n + 1;
     }
   }
 }
 
 //Saving Image
-  void saveImage(File f) {
+void saveImage(File f) {
   if (f != null) {
-    PImage canvas = get(0, 150, 800, 450);
+    PImage canvas = get(0, 300,1600,900);
     canvas.save(f.getAbsolutePath());
   }
 }
